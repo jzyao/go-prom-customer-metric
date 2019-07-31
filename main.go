@@ -12,18 +12,17 @@ import (
 func recordMetrics() {
         go func() {
                 for {
-                        myGague.Add(11)
+                        opsProcessed.Inc()
                         time.Sleep(2 * time.Second)
                 }
         }()
 }
 
 var (
-         myGague = promauto.NewGauge(prometheus.GaugeOpts{
-         Name: "my_example_gauge_data",
-         Help: "my example gauge data",
-         ConstLabels:map[string]string{"error":""},
-         })
+        opsProcessed = promauto.NewCounter(prometheus.CounterOpts{
+                Name: "myapp_processed_ops_total",
+                Help: "The total number of processed events",
+        })
 )
 
 func main() {
