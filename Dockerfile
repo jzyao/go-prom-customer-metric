@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM golang:1.12
 WORKDIR /go/src/github.com/yilei/go-prom-customer-metrics/
 RUN go get -d -v github.com/prometheus/client_golang/prometheus
 RUN go get -d -v github.com/prometheus/client_golang/prometheus/promauto
